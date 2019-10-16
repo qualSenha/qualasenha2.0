@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar transparent style="background-color: #FF0000">
+    <ion-title><span>Agendamento</span></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-card-content class="preto">
+      <div class="title" text-center>
+        Dados Agendamento
+      </div>
+    </ion-card-content>
+
+  <ion-card-content class="texts">
+    <ion-item>
+      <ion-label>Local</ion-label>
+        <ion-select [(ngModel)]="model.localAtendimento">
+            <ion-option value="anaRosa">Ana Rosa</ion-option>
+            <ion-option value="anhangabau">Vale do Anhangabaú</ion-option>
+            <ion-option value="predioTres">Liberdade Prédio 3</ion-option>
+            <ion-option value="saoBernardo">São Bernardo do Campo</ion-option>
+            <ion-option value="brigadeiro">Brigadeiro</ion-option>
+            <ion-option value="predioDez">Liberdade Prédio 10</ion-option>
+            <ion-option value="ponteEstaiada">Ponte Estaida</ion-option>
+            <ion-option value="itaimBibi">Itaim Bibi</ion-option>
+            <ion-option value="posGraduacao">Centro de Pós-Graduação</ion-option>
+            <ion-option value="vilaMarianaI">Vila Mariana I</ion-option>
+            <ion-option value="vilaMarianaII">Vila Mariana II</ion-option>
+            <ion-option value="santoAmaro">Santo Amaro</ion-option>
+            <ion-option value="morumbi">Morumbi</ion-option>
+            <ion-option value="liberdade">Liberdade</ion-option>
+        </ion-select>
+    </ion-item>
+  </ion-card-content>  
+
+  <ion-card-content class="texts">
+    <ion-item>
+      <ion-label>Solicitação</ion-label>
+        <ion-select [(ngModel)]="model.tipoSolicitacao">
+          <ion-option value="financeiro">Financeiro</ion-option>
+          <ion-option value="matricula">Matricula</ion-option>
+          <ion-option value="disciplinas">Disciplinas (Eletivas, DP e ADAP)</ion-option>
+          <ion-option value="estagio">Estagio</ion-option>
+          <ion-option value="outros">Outros Serviços</ion-option>
+        </ion-select>
+    </ion-item>
+  </ion-card-content>
+
+  <ion-card-content class="texts">
+    <ion-item>
+      <ion-label>Dia</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="model.dia"></ion-datetime>
+    </ion-item>
+  </ion-card-content>
+
+  <ion-card-content class="texts">
+    <ion-item>
+      <ion-label>Hora</ion-label>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="model.hora"></ion-datetime>
+    </ion-item> 
+  </ion-card-content>
+
+  <ion-card-content>
+    <button ion-button block large color="danger" (click)="showAlert()" round outline>Agendar</button>
+  </ion-card-content>
+
+</ion-content>

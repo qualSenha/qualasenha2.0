@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar transparent class="vermelho">
+    <ion-title><span>Configurações</span></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-card-content class="preto">
+      <div class="title" text-center>
+        Dados Pessoais
+      </div>
+    </ion-card-content>
+
+    <ion-card-content class="texts">
+      <ion-item>
+       <ion-label>Nome Completo:</ion-label>
+			<ion-input [(ngModel)]="model.nome" id="nome"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  
+    <ion-card-content class="texts">
+      <ion-item>
+        <ion-label>CPF: </ion-label>
+        <ion-input [(ngModel)]="model.cpf" id="cpf"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  
+    <ion-card-content class="texts">
+      <ion-item>
+        <ion-label>E-mail:</ion-label>
+        <ion-input [(ngModel)]="model.email" id="email"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  
+    <ion-card-content class="texts">
+      <ion-item>
+        <ion-label>Data de Nascimento:</ion-label>
+        <ion-datetime [(ngModel)]="model.dataNascimento" id="dataNascimento" displayFormat="DD/MM/YYYY"  pickerFormat="DD MM YYYY"></ion-datetime>
+      </ion-item>
+    </ion-card-content>
+ 
+    <ion-card-content style="text-align: left; font-size: 30px">
+      <ion-item>
+        <ion-label>Telefone: </ion-label>
+        <ion-input [(ngModel)]="model.telefone" id="telefone"></ion-input>
+      </ion-item>
+    </ion-card-content> 
+
+  <ion-card-content>
+    <button ion-button block large color="danger" outline round (click)="putUsuario()">Atualizar</button>
+  </ion-card-content>
+
+</ion-content>

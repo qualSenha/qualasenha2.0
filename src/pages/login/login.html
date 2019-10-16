@@ -1,0 +1,51 @@
+<ion-content padding>
+
+
+  <img src="assets/imgs/logos.png" style="width: 100%" />
+
+
+  <ion-card>
+	  <ion-item style="background-color: #A4A4A4">
+	    <ion-label  style="color: #FFFFFF" stacked>R.A.</ion-label>
+	   	<ion-input  style="color:#000000"  type="text" [(ngModel)]="model.ra"></ion-input>
+	  </ion-item>
+  </ion-card>
+
+  <ion-card>
+	  <ion-item style="background-color: #A4A4A4">
+	    <ion-label style="color: #FFFFFF" stacked>Senha</ion-label>	
+	    <ion-input style="color:#000000" type="password" [(ngModel)]="model.senha"></ion-input>
+	  </ion-item>
+  </ion-card>
+
+    <ion-card>
+    <ion-item style="background-color: #A4A4A4" >
+      <ion-label style="color: #FFFFFF">Local de Atendimento</ion-label>
+        <ion-select [(ngModel)]="a">
+          <ion-option value="">Ana Rosa</ion-option>
+          <ion-option value="">Vale do Anhangabaú</ion-option>
+          <ion-option value="">Liberdade Prédio 3</ion-option>
+          <ion-option value="">São Bernardo do Campo</ion-option>
+          <ion-option value="">Brigadeiro</ion-option>
+          <ion-option value="">Liberdade Prédio 10</ion-option>
+          <ion-option value="">Ponte Estaida</ion-option>
+          <ion-option value="">Itaim Bibi</ion-option>
+          <ion-option value="">Centro de Pós-Graduação</ion-option>
+          <ion-option value="">Vila Mariana I</ion-option>
+          <ion-option value="">Vila Mariana II</ion-option>
+          <ion-option value="">Santo Amaro</ion-option>
+          <ion-option value="">Morumbi</ion-option>
+          <ion-option value="">Liberdade</ion-option>
+        </ion-select>
+    </ion-item>
+  </ion-card>
+
+    <ion-card-content style="text-align: center; font-size: 30px">
+      <ion-list>
+            <h1> 
+              <button style="background-color: #FF0000" ion-button large full (click)="getUsuario()" round>ENTRAR</button>
+            </h1>
+      </ion-list>
+    </ion-card-content>
+
+</ion-content>
