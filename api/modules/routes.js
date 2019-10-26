@@ -23,6 +23,22 @@ var routes = (app) =>
             app.src.controllers.agendamentoController.postAgendamento(app, req, res)
         }
     )
+
+    app.get(
+        '/getAgendamentos',
+        (req, res) =>
+        {
+            app.src.controllers.atendimentoController.getAgendamentos(app, req, res)
+        }
+    )
+
+    app.get(
+        '/chamarAgendamento',
+        (req, res) =>
+        {
+            app.src.controllers.atendimentoController.chamarAgendamento(app, req, res)
+        }
+    )
 }
 
 module.exports = routes
