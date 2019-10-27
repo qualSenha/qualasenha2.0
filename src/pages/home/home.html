@@ -26,6 +26,11 @@
         </ion-list>
       </ion-card>
 
+      <ion-card-content *ngIf="model.dia">
+        <button ion-button block large (click)="cancelar()" color="danger" round outline>cancelar
+        </button>
+      </ion-card-content>
+
   <!--ion-card *ngIf="model.dia" color="roxo">
     <ion-card-content style="background-color: #424242;text-align: center; font-size: 30px">
       <ion-card-header>

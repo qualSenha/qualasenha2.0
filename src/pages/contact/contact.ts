@@ -52,4 +52,5 @@ export class Usuario {
   dataNascimento: any
   telefone: any
   id: any
+  local: any
 }

@@ -65,4 +65,5 @@ export class Agendamento {
 	tipoSolicitacao: any
 	dia: any
 	hora: any
+	local: any
 }
