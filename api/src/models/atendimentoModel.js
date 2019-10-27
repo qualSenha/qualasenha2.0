@@ -18,17 +18,22 @@ var dbConnection = () => {
 }
 
 class Agendamento {
-    async getAgendamentos(data) {
+    async getAgendamentos(dados) {
         try {
             var _dbConnection = dbConnection()
             const query = util.promisify(_dbConnection.query).bind(_dbConnection)
 
             const retorno = await query
             (
-                ' SELECT * FROM agendamento WHERE horaAtendimento > ? AND status = ?; ',
+                ' SELECT * FROM agendamento ' +
+                ' WHERE horaAtendimento > ? AND horaAtendimento < ? ' +
+                ' AND status = ? AND localAtendimento = ? ' +
+                ' ORDER BY horaAtendimento; ',
                 [
-                    data,
-                    0
+                    dados.data,
+                    dados.dataFinal,
+                    0,
+                    dados.local
                 ]
             )
 
@@ -41,18 +46,19 @@ class Agendamento {
         }
     }
 
-    async chamarAgendamento(data) {
+    async chamarAgendamento(dados) {
         try {
             var _dbConnection = dbConnection()
             const query = util.promisify(_dbConnection.query).bind(_dbConnection)
 
-            const retorno = await query
+            const [retorno] = await query
             (
                 ' SELECT * FROM agendamento ' +
-                ' WHERE horaAtendimento = (SELECT MIN(horaAtendimento) FROM agendamento WHERE horaAtendimento > ?);',
+                ' WHERE horaAtendimento = (SELECT MIN(horaAtendimento) FROM agendamento WHERE horaAtendimento > ? AND horaAtendimento < ? AND localAtendimento = ?);',
                 [
-                    data,
-                    data
+                    dados.data,
+                    dados.dataFinal,
+                    dados.local
                 ]
             )
 

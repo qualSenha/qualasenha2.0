@@ -1,5 +1,13 @@
 var routes = (app) =>
 {
+    app.get(
+        '/',
+        (req, res) =>
+        {
+            app.src.controllers.usuarioController.getUnidades(app, req, res)
+        }
+    )
+
     app.post(
         '/',
         (req, res) =>
@@ -24,6 +32,14 @@ var routes = (app) =>
         }
     )
 
+    app.post(
+        '/cancelarAgendamentos',
+        (req, res) =>
+        {
+            app.src.controllers.agendamentoController.cancelarAgendamento(app, req, res)
+        }
+    )
+
     app.get(
         '/getAgendamentos',
         (req, res) =>
@@ -37,6 +53,13 @@ var routes = (app) =>
         (req, res) =>
         {
             app.src.controllers.atendimentoController.chamarAgendamento(app, req, res)
+        }
+    )
+
+    app.get(
+        '/gerarSenha',
+        (req, res) => {
+            app.src.controllers.geralController.gerarSenha(app, req, res)
         }
     )
 }

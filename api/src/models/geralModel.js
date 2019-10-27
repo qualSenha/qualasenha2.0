@@ -18,20 +18,17 @@ var dbConnection = () => {
 }
 
 class Inquilino {
-    async getUsuario(dados) {
+    async getSenhas(local) {
         try {
             var _dbConnection = dbConnection()
             const query = util.promisify(_dbConnection.query).bind(_dbConnection)
 
-            const [retorno] = await query
+            const retorno = await query
             (
-                ' SELECT u.*, a.horaAtendimento, a.localAtendimento, a.tipoSolicitacao, a.status ' +
-                ' FROM usuario          AS u ' +
-                ' LEFT JOIN agendamento AS a ON a.ra = u.ra ' +
-                ' WHERE u.ra = ? AND u.senha = ? ',
+                ' SELECT * FROM senhas WHERE local = ? AND status = ? ORDER BY id ',
                 [
-                    dados.ra,
-                    dados.senha
+                    local,
+                    0
                 ]
             )
 
@@ -44,43 +41,20 @@ class Inquilino {
         }
     }
 
-    async putUsuario(dados) {
+    async postSenha(dados) {
         try {
             var _dbConnection = dbConnection()
             const query = util.promisify(_dbConnection.query).bind(_dbConnection)
 
             const retorno = await query
             (
-                ' UPDATE usuario SET senha = ?, nome = ?, cpf = ?, email = ?, telefone = ?, dataNascimento = ? ' +
-                ' WHERE ra = ? ',
+                ' INSERT INTO senhas (senha, local, status, ra) VALUES (?, ?, ?, ?); ',
                 [
                     dados.senha,
-                    dados.nome,
-                    dados.cpf,
-                    dados.email,
-                    dados.telefone,
-                    dados.dataNascimento,
+                    dados.local,
+                    0,
                     dados.ra
                 ]
-            )
-
-            return retorno
-            
-        } catch (err) {
-            return err
-        } finally {
-            _dbConnection.destroy()
-        }
-    }
-
-    async getUnidades() {
-        try {
-            var _dbConnection = dbConnection()
-            const query = util.promisify(_dbConnection.query).bind(_dbConnection)
-
-            const retorno = await query
-            (
-                ' SELECT * FROM unidades '
             )
 
             return retorno
