@@ -6,8 +6,8 @@ import { ModuleLoader } from 'ionic-angular/umd/util/module-loader';
 @Injectable()
 export class ServidorProvider {
 
-  private URL = "http://localhost:5000"
-  //private URL = "http://192.168.43.81:5000"
+  //private URL = "http://localhost:5000"
+  private URL = "http://65c42b1f.ngrok.io"
 
   constructor(public http: Http) {
     console.log('Hello ServidorProvider Provider')
@@ -68,6 +68,28 @@ export class ServidorProvider {
       "dia": dados.dia,
       "localAtendimento": dados.localAtendimento,
       "tipoSolicitacao": dados.tipoSolicitacao
+    }
+
+    return new Promise((resolve,reject) => {
+      this.http.post(url, body)
+      .subscribe(
+        (result: any) => {
+          resolve(result.json())
+        },
+        (error: any) => {
+          reject(error.json())
+        }
+      )
+    })
+  }
+
+  cancelarAgendamento(dados) {
+    let url = `${this.URL}/cancelarAgendamentos`
+
+    let body = {
+      "ra": dados.ra, 
+      "hora": dados.hora,
+      "dia": dados.dia,
     }
 
     return new Promise((resolve,reject) => {

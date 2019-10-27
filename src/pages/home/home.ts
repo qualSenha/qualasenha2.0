@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular'
 import { HomeSgPage } from '../home-sg/home-sg';
+import { ServidorProvider } from '../../providers/servidor/servidor';
 
 @Component({
 	selector: 'page-home',
@@ -11,9 +12,11 @@ import { HomeSgPage } from '../home-sg/home-sg';
 export class HomePage {
 	model: Home
 
+
 	constructor(
 		private navCtrl: NavController,
 		private alertCtrl: AlertController,
+		private servidor: ServidorProvider,
 		private navParams: NavParams
 	) {
 		this.model = new Home()
@@ -80,6 +83,18 @@ export class HomePage {
 	openGerar() {
 		this.navCtrl.setRoot(HomeSgPage);
 	}
+
+	cancelar() {
+		this.servidor.cancelarAgendamento(this.model)
+			.then((result: any) => {
+				this.model.dia=null
+				this.navParams.data = this.model
+				this.navCtrl.setRoot(HomePage, this.model)
+			})
+			.catch((error: any) => {
+				console.log(error)
+			})
+	}
 }
 
 export class Home {
@@ -96,4 +111,5 @@ export class Home {
 	tipoSolicitacao: any
 	dia: any
 	hora: any
+	local: any
 }

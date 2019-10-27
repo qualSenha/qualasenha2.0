@@ -22,7 +22,7 @@ export class TabsPage {
 
     navParams.get('model') ? this.model = navParams.get('model') : this.model = navParams.data
 
-    console.log('tabs')
+    console.log(this.model)
   }
 
   ionViewDidEnter () {}
@@ -40,5 +40,6 @@ export class Usuarios {
 	localAtendimento: any
 	tipoSolicitacao: any
 	dia: any
-	hora: any
+  hora: any
+  local: any
 }

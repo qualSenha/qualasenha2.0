@@ -29,10 +29,11 @@ export class LoginPage {
   getUsuario() {
     this.servidor.getUsuario(this.model)
       .then((result: any) => {
-        console.log(result)
         if(result) {
+          this.model= result
+          console.log(this.model)
           this.navCtrl.push(TabsPage, {
-            model: result
+            model: this.model
           })
         } else {
           this.toast.create({ message: 'RA ou senha incorreto.', position: 'botton', duration: 3000 }).present()
@@ -47,4 +48,17 @@ export class LoginPage {
 export class Usuario {
   ra: any
   senha: any
+  local: any
+  ID: any
+  nome: any
+  cpf: any
+  email: any
+  telefone: any
+  dataNascimento: any
+  horaAtendimento: any
+  localAtendimento: any
+  tipoSolicitacao: any
+  status: any
+  hora: any
+  dia: any
 }
