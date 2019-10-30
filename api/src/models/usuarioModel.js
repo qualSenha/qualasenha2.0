@@ -25,11 +25,13 @@ class Inquilino {
 
             const [retorno] = await query
             (
-                ' SELECT u.*, a.horaAtendimento, a.localAtendimento, a.tipoSolicitacao, a.status ' +
+                ' SELECT u.*, a.horaAtendimento, a.localAtendimento, a.tipoSolicitacao, a.status, s.senha AS "senhaAtendimento", s.local AS "localAtendimento" ' +
                 ' FROM usuario          AS u ' +
                 ' LEFT JOIN agendamento AS a ON a.ra = u.ra ' +
+                ' LEFT JOIN senhas      AS s ON s.ra = u.ra AND s.status <> ? ' +
                 ' WHERE u.ra = ? AND u.senha = ? ',
                 [
+                    2,
                     dados.ra,
                     dados.senha
                 ]

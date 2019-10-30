@@ -57,9 +57,31 @@ var routes = (app) =>
     )
 
     app.get(
+        '/chamarSenha',
+        (req, res) =>
+        {
+            app.src.controllers.atendimentoController.chamarSenha(app, req, res)
+        }
+    )
+
+    app.get(
         '/gerarSenha',
         (req, res) => {
             app.src.controllers.geralController.gerarSenha(app, req, res)
+        }
+    )
+
+    app.get(
+        '/getSenhas',
+        (req, res) => {
+            app.src.controllers.geralController.getSenhas(app, req, res)
+        }
+    )
+
+    app.post(
+        '/cancelarSenha',
+        (req, res) => {
+            app.src.controllers.geralController.cancelarSenha(app, req, res)
         }
     )
 }

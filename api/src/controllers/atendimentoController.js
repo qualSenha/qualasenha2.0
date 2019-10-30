@@ -22,7 +22,15 @@ async function chamarAgendamento(app, req, res) {
     res.json(result)
 }
 
+async function chamarSenha(app, req, res) {
+
+    var result = await atendimentoModel.chamarSenha(req.query.local)
+
+    res.json(result)
+}
+
 module.exports = {
     getAgendamentos,
-    chamarAgendamento
+    chamarAgendamento,
+    chamarSenha
 }

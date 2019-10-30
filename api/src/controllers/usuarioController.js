@@ -17,7 +17,7 @@ async function putUsuario(app, req, res) {
         req.body['dataNascimento'] = null
     }
 
-    var teste = await usuarioModel.putUsuario(req.body)
+    await usuarioModel.putUsuario(req.body)
 
     res.json({ ok: true })
 }

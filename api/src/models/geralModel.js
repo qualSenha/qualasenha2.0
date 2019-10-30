@@ -25,7 +25,7 @@ class Inquilino {
 
             const retorno = await query
             (
-                ' SELECT * FROM senhas WHERE local = ? AND status = ? ORDER BY id ',
+                ' SELECT * FROM senhas WHERE local = ? AND status = ? ',
                 [
                     local,
                     0
@@ -54,6 +54,30 @@ class Inquilino {
                     dados.local,
                     0,
                     dados.ra
+                ]
+            )
+
+            return retorno
+            
+        } catch (err) {
+            return err
+        } finally {
+            _dbConnection.destroy()
+        }
+    }
+
+    async cancelarSenha(dados) {
+        try {
+            var _dbConnection = dbConnection()
+            const query = util.promisify(_dbConnection.query).bind(_dbConnection)
+
+            const retorno = await query
+            (
+                ' UPDATE senhas SET status = ? WHERE ra = ? AND local = ?; ',
+                [
+                    2,
+                    dados.ra,
+                    dados.local
                 ]
             )
 

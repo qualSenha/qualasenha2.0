@@ -18,10 +18,23 @@ async function gerarSenha (app, req, res) {
 
     await geralModel.postSenha(dados)
 
-    res.json({ senha: dados.senha })
-        
+    res.json({ senha: dados.senha, localAtendimento: dados.local })       
+}
+
+async function getSenhas(app, req, res) {
+    var result = await geralModel.getSenhas(req.query.local)
+
+    res.json(result)
+}
+
+async function cancelarSenha(app, req, res) {
+    await geralModel.cancelarSenha(req.body)
+
+    res.json({ok: true})
 }
 
 module.exports = {
-    gerarSenha
+    gerarSenha,
+    getSenhas,
+    cancelarSenha
 }

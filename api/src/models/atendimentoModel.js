@@ -70,6 +70,29 @@ class Agendamento {
             _dbConnection.destroy()
         }
     }
+
+    async chamarSenha(local) {
+        try {
+            var _dbConnection = dbConnection()
+            const query = util.promisify(_dbConnection.query).bind(_dbConnection)
+
+            const [retorno] = await query
+            (
+                ' SELECT MIN(senha) AS "senha" FROM senhas WHERE status = ? AND local = ?;',
+                [
+                    0,
+                    local
+                ]
+            )
+
+            return retorno
+            
+        } catch (err) {
+            return err
+        } finally {
+            _dbConnection.destroy()
+        }
+    }
 }
 
 module.exports = new Agendamento()
