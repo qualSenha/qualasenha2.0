@@ -7,7 +7,7 @@ import { ModuleLoader } from 'ionic-angular/umd/util/module-loader';
 export class ServidorProvider {
 
   //private URL = "http://localhost:5000"
-  private URL = "http://65c42b1f.ngrok.io"
+  private URL = "http://2629abe9.ngrok.io"
 
   constructor(public http: Http) {
     console.log('Hello ServidorProvider Provider')
@@ -104,5 +104,59 @@ export class ServidorProvider {
       )
     })
   }
+
+  getSenhas(local) {
+    let url = `${this.URL}/getSenhas?local=${local}`
+
+    return new Promise((resolve,reject) => {
+      this.http.get(url)
+      .subscribe(
+        (result: any) => {
+          resolve(result.json())
+        },
+        (error: any) => {
+          reject(error.json())
+        }
+      )
+    })
+  }
+
+  gerarSenha(dados) {
+    let url = `${this.URL}/gerarSenha?local=${dados.local}&ra=${dados.ra}`
+
+    return new Promise((resolve,reject) => {
+      this.http.get(url)
+      .subscribe(
+        (result: any) => {
+          resolve(result.json())
+        },
+        (error: any) => {
+          reject(error.json())
+        }
+      )
+    })
+  }
+
+  cancelarSenha(dados) {
+    let url = `${this.URL}/cancelarSenha`
+
+    let body = {
+      "ra": dados.ra,
+      "local": dados.localAtendimento
+    }
+
+    return new Promise((resolve,reject) => {
+      this.http.post(url, body)
+      .subscribe(
+        (result: any) => {
+          resolve(result.json())
+        },
+        (error: any) => {
+          reject(error.json())
+        }
+      )
+    })
+  }
+
 
 }
