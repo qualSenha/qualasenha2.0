@@ -62,7 +62,7 @@
   </ion-card-content>
 
   <ion-card-content>
-    <button ion-button block large color="danger" (click)="showAlert()" round outline>Agendar</button>
+    <button [disabled]="model.senhaAtendimento" ion-button block large color="danger" (click)="showAlert()" round outline>Agendar</button>
   </ion-card-content>
 
 </ion-content>
