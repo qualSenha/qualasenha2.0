@@ -17,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule} from '@angular/http';
 import { HomeSgPage } from '../pages/home-sg/home-sg';
 import { LoginPage } from '../pages/login/login';
-
+import { ChatPage } from '../pages/chat/chat'
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { LoginPage } from '../pages/login/login';
     HomePage,
     TabsPage,
     HomeSgPage,
-    LoginPage
+    LoginPage,
+    ChatPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +43,8 @@ import { LoginPage } from '../pages/login/login';
     HomePage,
     TabsPage,
     HomeSgPage,
-    LoginPage
+    LoginPage,
+    ChatPage
   ],
   providers: [
     StatusBar,

@@ -27,22 +27,8 @@ export class LoginPage {
   ionViewDidLoad() {}
 
   getUsuario() {
-    this.servidor.getUsuario(this.model)
-      .then((result: any) => {
-        if(result) {
-          var batata = this.model.local
-          this.model= result
-          this.model.local=batata
-          this.navCtrl.push(TabsPage, {
-            model: this.model
-          })
-        } else {
-          this.toast.create({ message: 'RA ou senha incorreto.', position: 'botton', duration: 3000 }).present()
-        }
-      })
-      .catch((error: any) => {
-        console.log(error)
-      });
+          this.navCtrl.push(TabsPage)
+        
   }
 }
 

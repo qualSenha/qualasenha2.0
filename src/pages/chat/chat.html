@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar transparent style="background-color: #FF0000">
+    <ion-title>
+       <span>Chat</span>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row class="message_row">
+      <ion-col col-9>
+        <ion-item no-lines>
+          <ion-input type="text" placeholder="Message" [(ngModel)]="Mensagem"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button clear color="primary" (click)="enviarMensagem()" [disabled]="Mensagem === ''">
+        Enviar
+      </button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
