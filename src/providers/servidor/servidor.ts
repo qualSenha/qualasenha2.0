@@ -8,7 +8,7 @@ export class ServidorProvider {
 
   //private URL = "http://localhost:5000"
   //private URL = "http://2629abe9.ngrok.io"
-  private URL = "http://192.168.43.81:5000"
+  private URL = "http://d092bccc.ngrok.io"
 
   constructor(public http: Http) {
     console.log('Hello ServidorProvider Provider')

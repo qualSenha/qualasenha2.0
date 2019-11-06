@@ -20,7 +20,7 @@ import { LoginPage } from '../pages/login/login';
 
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { ChatPage } from '../pages/chat/chat';
-const config: SocketIoConfig = { url: 'http://04f61b32.ngrok.io', options: {} };
+const config: SocketIoConfig = { url: 'http://d092bccc.ngrok.io', options: {} };
 
 
 @NgModule({
