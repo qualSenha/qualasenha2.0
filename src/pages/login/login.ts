@@ -27,7 +27,11 @@ export class LoginPage {
   ionViewDidLoad() {}
 
   getUsuario() {
+<<<<<<< HEAD
     console.log('oi')
+=======
+<<<<<<< HEAD
+>>>>>>> 90e7339c344296a44574e443e5c4e59866fad604
     this.servidor.getUsuario(this.model)
       .then((result: any) => {
         console.log(result)
@@ -45,8 +49,13 @@ export class LoginPage {
       .catch((error: any) => {
         console.log(error)
       });
+=======
+          this.navCtrl.push(TabsPage)
+        
+>>>>>>> 5c8457d59761db7f2c2e77dd78c5fe69f997150c
   }
 }
+
 
 export class Usuario {
   ra: any

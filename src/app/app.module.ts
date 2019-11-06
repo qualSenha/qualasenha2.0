@@ -17,7 +17,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule} from '@angular/http';
 import { HomeSgPage } from '../pages/home-sg/home-sg';
 import { LoginPage } from '../pages/login/login';
+<<<<<<< HEAD
 
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+import { ChatPage } from '../pages/chat/chat';
+const config: SocketIoConfig = { url: 'http://04f61b32.ngrok.io', options: {} };
+
+=======
+import { ChatPage } from '../pages/chat/chat'
+>>>>>>> 5c8457d59761db7f2c2e77dd78c5fe69f997150c
 
 @NgModule({
   declarations: [
@@ -27,11 +35,18 @@ import { LoginPage } from '../pages/login/login';
     HomePage,
     TabsPage,
     HomeSgPage,
+<<<<<<< HEAD
+    ChatPage,
     LoginPage
+=======
+    LoginPage,
+    ChatPage
+>>>>>>> 5c8457d59761db7f2c2e77dd78c5fe69f997150c
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    SocketIoModule.forRoot(config),
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -42,7 +57,13 @@ import { LoginPage } from '../pages/login/login';
     HomePage,
     TabsPage,
     HomeSgPage,
+<<<<<<< HEAD
+    ChatPage,
     LoginPage
+=======
+    LoginPage,
+    ChatPage
+>>>>>>> 5c8457d59761db7f2c2e77dd78c5fe69f997150c
   ],
   providers: [
     StatusBar,
