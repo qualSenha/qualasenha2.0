@@ -7,13 +7,15 @@ import { ModuleLoader } from 'ionic-angular/umd/util/module-loader';
 export class ServidorProvider {
 
   //private URL = "http://localhost:5000"
-  private URL = "http://2629abe9.ngrok.io"
+  //private URL = "http://2629abe9.ngrok.io"
+  private URL = "http://192.168.43.81:5000"
 
   constructor(public http: Http) {
     console.log('Hello ServidorProvider Provider')
   }
 
   getUsuario(model) {
+    console.log('ou')
     let body = {
       "ra": model.ra, 
       "senha": model.senha
@@ -23,9 +25,11 @@ export class ServidorProvider {
       this.http.post(this.URL, body)
       .subscribe(
         (result: any) => {
+          console.log(result)
           resolve(result.json())
         },
         (error: any) => {
+          console.log(error)
           reject(error.json())
         }
       )

@@ -27,8 +27,10 @@ export class LoginPage {
   ionViewDidLoad() {}
 
   getUsuario() {
+    console.log('oi')
     this.servidor.getUsuario(this.model)
       .then((result: any) => {
+        console.log(result)
         if(result) {
           var batata = this.model.local
           this.model= result

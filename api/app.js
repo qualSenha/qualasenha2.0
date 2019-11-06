@@ -1,7 +1,7 @@
 var app = require('./modules/config')
 var port = 5000
 
-app.listen
+var server = app.listen
 (
     port,
     function()
@@ -9,3 +9,16 @@ app.listen
         console.log(`API conectada na porta ${port}`)
     }
 )
+
+var io = require('socket.io').listen(server)
+
+io.on('connection', (socket) => {
+
+    socket.on('add-message', (message) => {
+        io.emit('message', {
+            text: message.text,
+            from: message.nickname,
+            created: new Date()
+        })
+    })
+})
