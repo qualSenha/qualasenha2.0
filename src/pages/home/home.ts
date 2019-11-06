@@ -11,6 +11,7 @@ import { ServidorProvider } from '../../providers/servidor/servidor';
 
 export class HomePage {
 	model: Home
+	senhas: any []
 
 
 	constructor(
@@ -25,6 +26,8 @@ export class HomePage {
 	}
 
 	ionViewDidEnter() {
+		this.senhas=[]
+		this.getSenhas()
 		switch(this.model.localAtendimento) {
 			case 'anaRosa' :
 				this.model.onde = 'Ana Rosa'
@@ -95,6 +98,41 @@ export class HomePage {
 				console.log(error)
 			})
 	}
+
+	getSenhas() {
+		this.servidor.getSenhas(this.model.local)
+			.then((result: any) => {
+			for(let senha of result){
+				this.senhas.push(senha)
+			}
+			console.log(this.senhas)
+			})
+			.catch((error: any) => {
+				console.log(error)
+			})
+	}
+
+	gerarSenha() {
+		this.servidor.gerarSenha(this.model)
+			.then((result: any) => {
+			this.model.senhaAtendimento=result.senha
+			})
+			.catch((error: any) => {
+				console.log(error)
+			})
+	}
+
+	cancelarSenha() {
+		this.servidor.cancelarSenha(this.model)
+			.then((result: any) => {
+				this.model.senhaAtendimento=null
+				this.navParams.data = this.model
+				this.navCtrl.setRoot(HomePage, this.model)
+			})
+			.catch((error: any) => {
+				console.log(error)
+			})
+	}
 }
 
 export class Home {
@@ -112,4 +150,5 @@ export class Home {
 	dia: any
 	hora: any
 	local: any
+	senhaAtendimento: any
 }

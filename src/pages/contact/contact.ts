@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
-import { NavController, NavParams, AlertController } from 'ionic-angular'
+import { NavController, NavParams, AlertController, App } from 'ionic-angular'
 import { ServidorProvider } from '../../providers/servidor/servidor'
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-contact',
@@ -13,6 +14,7 @@ export class ContactPage {
     private navCtrl: NavController,
     private navParams: NavParams,
     private servidor: ServidorProvider,
+    private appCtrl: App,
     private alertCtrl: AlertController
     ) {
       this.model = new Usuario()
@@ -39,6 +41,11 @@ export class ContactPage {
     })
 
     alert.present()
+  }
+
+  sair(){
+    
+    this.appCtrl.getRootNav().push(LoginPage);
   }
 
 }

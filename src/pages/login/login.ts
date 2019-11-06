@@ -30,8 +30,9 @@ export class LoginPage {
     this.servidor.getUsuario(this.model)
       .then((result: any) => {
         if(result) {
+          var batata = this.model.local
           this.model= result
-          console.log(this.model)
+          this.model.local=batata
           this.navCtrl.push(TabsPage, {
             model: this.model
           })
@@ -44,6 +45,7 @@ export class LoginPage {
       });
   }
 }
+
 
 export class Usuario {
   ra: any

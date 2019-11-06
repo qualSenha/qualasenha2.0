@@ -18,6 +18,10 @@ import { HttpModule} from '@angular/http';
 import { HomeSgPage } from '../pages/home-sg/home-sg';
 import { LoginPage } from '../pages/login/login';
 
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+import { ChatPage } from '../pages/chat/chat';
+const config: SocketIoConfig = { url: 'http://04f61b32.ngrok.io', options: {} };
+
 
 @NgModule({
   declarations: [
@@ -27,11 +31,13 @@ import { LoginPage } from '../pages/login/login';
     HomePage,
     TabsPage,
     HomeSgPage,
+    ChatPage,
     LoginPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    SocketIoModule.forRoot(config),
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -42,6 +48,7 @@ import { LoginPage } from '../pages/login/login';
     HomePage,
     TabsPage,
     HomeSgPage,
+    ChatPage,
     LoginPage
   ],
   providers: [
