@@ -25,11 +25,13 @@ class Inquilino {
 
             const [retorno] = await query
             (
-                ' SELECT u.*, a.horaAtendimento, a.localAtendimento, a.tipoSolicitacao, a.status ' +
+                ' SELECT u.*, a.horaAtendimento, a.localAtendimento, a.tipoSolicitacao, a.status, s.senha AS "senhaAtendimento", s.local AS "localAtendimento" ' +
                 ' FROM usuario          AS u ' +
                 ' LEFT JOIN agendamento AS a ON a.ra = u.ra ' +
+                ' LEFT JOIN senhas      AS s ON s.ra = u.ra AND s.status <> ? ' +
                 ' WHERE u.ra = ? AND u.senha = ? ',
                 [
+                    2,
                     dados.ra,
                     dados.senha
                 ]
@@ -51,17 +53,36 @@ class Inquilino {
 
             const retorno = await query
             (
-                ' UPDATE usuario SET ra = ?, senha = ?, nome = ?, cpf = ?, email = ?, telefone = ?, dataNascimento = ? WHERE ID = ? ',
+                ' UPDATE usuario SET senha = ?, nome = ?, cpf = ?, email = ?, telefone = ?, dataNascimento = ? ' +
+                ' WHERE ra = ? ',
                 [
-                    dados.ra,
                     dados.senha,
                     dados.nome,
                     dados.cpf,
                     dados.email,
                     dados.telefone,
                     dados.dataNascimento,
-                    dados.id
+                    dados.ra
                 ]
+            )
+
+            return retorno
+            
+        } catch (err) {
+            return err
+        } finally {
+            _dbConnection.destroy()
+        }
+    }
+
+    async getUnidades() {
+        try {
+            var _dbConnection = dbConnection()
+            const query = util.promisify(_dbConnection.query).bind(_dbConnection)
+
+            const retorno = await query
+            (
+                ' SELECT * FROM unidades '
             )
 
             return retorno

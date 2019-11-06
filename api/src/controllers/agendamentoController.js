@@ -17,6 +17,16 @@ async function postAgendamento(app, req, res) {
     res.json({ ok: true })
 }
 
+async function cancelarAgendamento(app, req, res) {
+    req.body['horaAtendimento'] = `${req.body.dia} ${req.body.hora}`
+    console.log(req.body)
+    var teste = await agendamentoModel.cancelarAgendamento(req.body)
+    console.log(teste)
+
+    res.json({ ok : true })
+}
+
 module.exports = {
-    postAgendamento
+    postAgendamento,
+    cancelarAgendamento
 }

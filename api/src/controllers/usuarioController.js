@@ -11,14 +11,25 @@ async function login(app, req, res) {
 }
 
 async function putUsuario(app, req, res) {
-    req.body.dataNascimento = moment(req.body.dataNascimento).format('YYYY-MM-DD')
-    
+    if(req.body.dataNascimento && req.body.dataNascimento != 'Invalid date') {
+        req.body.dataNascimento = moment(req.body.dataNascimento).format('YYYY-MM-DD')
+    } else {
+        req.body['dataNascimento'] = null
+    }
+
     await usuarioModel.putUsuario(req.body)
 
     res.json({ ok: true })
 }
 
+async function getUnidades(app, req, res) {
+    var result = await usuarioModel.getUnidades()
+
+    res.json(result)
+}
+
 module.exports = {
     login,
-    putUsuario
+    putUsuario,
+    getUnidades
 }

@@ -1,7 +1,18 @@
 import { Component } from '@angular/core';
+<<<<<<< HEAD
 import { NavController, IonicPage, NavParams, ToastController } from 'ionic-angular';
 import { Socket } from 'ng-socket-io';
 import { Observable } from 'rxjs/Observable';
+=======
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
+/**
+ * Generated class for the ChatPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+>>>>>>> 5c8457d59761db7f2c2e77dd78c5fe69f997150c
 
 @IonicPage()
 @Component({
@@ -9,6 +20,7 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'chat.html',
 })
 export class ChatPage {
+<<<<<<< HEAD
   messages = [];
   nickname = '';
   message = '';
@@ -87,4 +99,14 @@ export class Usuarios {
 	dia: any
   hora: any
   local: any
+=======
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ChatPage');
+  }
+
+>>>>>>> 5c8457d59761db7f2c2e77dd78c5fe69f997150c
 }

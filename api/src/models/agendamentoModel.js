@@ -25,8 +25,11 @@ class Agendamento {
 
             const [retorno] = await query
             (
-                ' SELECT id FROM agendamento WHERE ra = ?; ',
-                ra
+                ' SELECT id FROM agendamento WHERE ra = ? AND status = ?; ',
+                [
+                    ra,
+                    0
+                ]
             )
 
             return retorno
@@ -82,6 +85,29 @@ class Agendamento {
                     dados.localAtendimento,
                     dados.tipoSolicitacao,
                     dados.idAgendamento
+                ]
+            )
+
+            return retorno
+            
+        } catch (err) {
+            return err
+        } finally {
+            _dbConnection.destroy()
+        }
+    }
+
+    async cancelarAgendamento(dados) {
+        try {
+            var _dbConnection = dbConnection()
+            const query = util.promisify(_dbConnection.query).bind(_dbConnection)
+
+            const retorno = await query
+            (
+                ' DELETE FROM agendamento WHERE ra = ? AND horaAtendimento = ? ',
+                [
+                    dados.ra,
+                    dados.horaAtendimento,
                 ]
             )
 

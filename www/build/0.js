@@ -1,6 +1,10 @@
 webpackJsonp([0],{
 
+<<<<<<< HEAD
 /***/ 324:
+=======
+/***/ 278:
+>>>>>>> 5c8457d59761db7f2c2e77dd78c5fe69f997150c
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +12,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatRoomPageModule", function() { return ChatRoomPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chat_room__ = __webpack_require__(327);
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(52);
+>>>>>>> 5c8457d59761db7f2c2e77dd78c5fe69f997150c
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -27,7 +35,11 @@ var ChatRoomPageModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__chat_room__["a" /* ChatRoomPage */],
             ],
             imports: [
+<<<<<<< HEAD
                 __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__chat_room__["a" /* ChatRoomPage */]),
+=======
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
+>>>>>>> 5c8457d59761db7f2c2e77dd78c5fe69f997150c
             ],
         })
     ], ChatRoomPageModule);

@@ -3,7 +3,11 @@ import { Component } from '@angular/core';
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
+<<<<<<< HEAD
 import { ChatPage } from '../chat/chat' ;
+=======
+import { ChatPage } from '../chat/chat'
+>>>>>>> 5c8457d59761db7f2c2e77dd78c5fe69f997150c
 
 import { NavParams } from 'ionic-angular';
 
