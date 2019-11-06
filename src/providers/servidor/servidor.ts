@@ -7,16 +7,8 @@ import { ModuleLoader } from 'ionic-angular/umd/util/module-loader';
 export class ServidorProvider {
 
   //private URL = "http://localhost:5000"
-<<<<<<< HEAD
   //private URL = "http://2629abe9.ngrok.io"
   private URL = "http://192.168.43.81:5000"
-=======
-<<<<<<< HEAD
-  private URL = "http://04f61b32.ngrok.io"
-=======
-  private URL = "http://2629abe9.ngrok.io"
->>>>>>> 5c8457d59761db7f2c2e77dd78c5fe69f997150c
->>>>>>> 90e7339c344296a44574e443e5c4e59866fad604
 
   constructor(public http: Http) {
     console.log('Hello ServidorProvider Provider')

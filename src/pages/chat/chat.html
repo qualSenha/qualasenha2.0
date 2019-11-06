@@ -1,18 +1,12 @@
 <ion-header>
-<<<<<<< HEAD
-  <ion-navbar transparent class="vermelho">
-    <ion-title>Chat</ion-title>
-=======
   <ion-navbar transparent style="background-color: #FF0000">
     <ion-title>
        <span>Chat</span>
     </ion-title>
->>>>>>> 5c8457d59761db7f2c2e77dd78c5fe69f997150c
   </ion-navbar>
 </ion-header>
  
 <ion-content>
-<<<<<<< HEAD
   <ion-grid>
     <ion-row *ngFor="let message of messages">
       
@@ -33,30 +27,17 @@
  
 </ion-content>
  
-=======
-</ion-content>
-
->>>>>>> 5c8457d59761db7f2c2e77dd78c5fe69f997150c
 <ion-footer>
   <ion-toolbar>
     <ion-row class="message_row">
       <ion-col col-9>
         <ion-item no-lines>
-<<<<<<< HEAD
           <ion-input type="text" placeholder="Message" [(ngModel)]="message"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col col-3>
         <button ion-button clear color="primary" (click)="sendMessage()" [disabled]="message === ''">
-        Send
-=======
-          <ion-input type="text" placeholder="Message" [(ngModel)]="Mensagem"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col col-3>
-        <button ion-button clear color="primary" (click)="enviarMensagem()" [disabled]="Mensagem === ''">
         Enviar
->>>>>>> 5c8457d59761db7f2c2e77dd78c5fe69f997150c
       </button>
       </ion-col>
     </ion-row>
