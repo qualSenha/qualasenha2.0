@@ -27,6 +27,7 @@
     "express": "^4.17.1",
     "ionic-angular": "3.9.3",
     "ionicons": "3.0.0",
+    "moment-timezone": "^0.5.27",
     "mysql": "^2.16.0",
     "ng-socket-io": "^0.2.4",
     "rxjs": "5.5.11",
@@ -35,7 +36,7 @@
     "zone.js": "0.8.29"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "3.2.1",
+    "@ionic/app-scripts": "^3.2.4",
     "typescript": "~2.6.2"
   },
   "description": "An Ionic project"

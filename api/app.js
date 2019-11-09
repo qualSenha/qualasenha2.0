@@ -18,7 +18,7 @@ io.on('connection', (socket) => {
         io.emit('message', {
             text: message.text,
             from: message.nickname,
-            created: new Date()
+            created: message.data
         })
     })
 })
