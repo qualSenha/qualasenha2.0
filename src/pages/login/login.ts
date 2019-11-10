@@ -65,4 +65,5 @@ export class Usuario {
   status: any
   hora: any
   dia: any
+  senhaAtendimento: any
 }

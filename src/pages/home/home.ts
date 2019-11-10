@@ -83,6 +83,7 @@ export class HomePage {
 		alert.present();
 	}
 
+
 	openGerar() {
 		this.navCtrl.setRoot(HomeSgPage);
 	}

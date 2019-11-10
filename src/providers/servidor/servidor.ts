@@ -8,7 +8,7 @@ export class ServidorProvider {
 
   //private URL = "http://localhost:5000"
   //private URL = "http://2629abe9.ngrok.io"
-  private URL = "http://d092bccc.ngrok.io"
+  private URL = "http://6a83eff0.ngrok.io"
 
   constructor(public http: Http) {
     console.log('Hello ServidorProvider Provider')
@@ -110,7 +110,7 @@ export class ServidorProvider {
   }
 
   getSenhas(local) {
-    let url = `${this.URL}/getSenhas?local=${local}`
+    let url = `${this.URL}/getSenhasChamadas?local=${local}`
 
     return new Promise((resolve,reject) => {
       this.http.get(url)
@@ -124,6 +124,7 @@ export class ServidorProvider {
       )
     })
   }
+
 
   gerarSenha(dados) {
     let url = `${this.URL}/gerarSenha?local=${dados.local}&ra=${dados.ra}`
@@ -162,5 +163,21 @@ export class ServidorProvider {
     })
   }
 
+  getChat(ra) {
+    let url = `${this.URL}/getChat?ra=${ra}`
+
+    return new Promise((resolve,reject) => {
+      this.http.get(url)
+      .subscribe(
+        (result: any) => {
+          resolve(result.json())
+        },
+        (error: any) => {
+          reject(error.json())
+        }
+      )
+    })
+  }
+  
 
 }
