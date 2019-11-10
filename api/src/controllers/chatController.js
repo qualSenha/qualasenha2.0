@@ -1,11 +1,11 @@
 var firebase = require('firebase')
+var chatModel = require('../models/chatModel')
 
 async function getChat(app, req, res) {
+    var msg = []
 
     firebase.database().ref(`/${req.query.ra}`).on('value', (snapshot) => {
         var result = snapshot.val()
-
-        var msg = []
 
         if(result) {
             var chaves = Object.keys(result)
@@ -17,21 +17,21 @@ async function getChat(app, req, res) {
                     origem: result[chave].origem
                 })
             }
-        }
-
-        res.send(msg)
-
+        }    
     })
+
+    res.send(msg)
 }
 
 async function getChamados(app, req, res) {
+    var chaves = null
+
     firebase.database().ref('/').on('value', (snapshot) => {
-        var chaves = null
         if(snapshot.val())
-            chaves = Object.keys(snapshot.val())
-        
-        res.send(chaves)
+            chaves = Object.keys(snapshot.val())    
     })
+    
+    res.send(chaves)
 }
 
 async function salvarMsg(message) {

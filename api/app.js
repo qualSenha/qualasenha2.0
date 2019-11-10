@@ -28,15 +28,21 @@ var io = require('socket.io').listen(server)
 io.on('connection', (socket) => {
 
     socket.on('add-message', (message) => {
-        io.emit('message', {
+        socket.emit('message', {
             text: message.text,
             origem: message.origem,
             data: message.data,
             ra: message.ra,
             nome: message.nickname
         })
+
+        firebase.database().ref(`/${message.ra}/${message.data}`)
+        .set({
+            mensagem: message.text,
+            origem: message.origem
+        })
         
-        app.src.controllers.chatController.salvarMsg(message)
+        //app.src.controllers.chatController.salvarMsg(message)
     })
 
     socket.on('chamarNormal', (data) => {
