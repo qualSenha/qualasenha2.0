@@ -1,4 +1,5 @@
 const geralModel = require('../models/geralModel')
+const moment = require('moment-timezone')
 
 async function gerarSenha (app, req, res) {
     var dados = req.query
@@ -27,6 +28,15 @@ async function getSenhas(app, req, res) {
     res.json(result)
 }
 
+async function getSenhasChamadas(app, req, res) {
+    var dados = req.query
+    dados['dtCriacao'] = moment(new Date()).tz('America/Sao_Paulo').format('YYYY-MM-DD')
+
+    var result = await geralModel.getSenhasChamadas(dados)
+
+    res.json(result)
+}
+
 async function cancelarSenha(app, req, res) {
     await geralModel.cancelarSenha(req.body)
 
@@ -36,5 +46,6 @@ async function cancelarSenha(app, req, res) {
 module.exports = {
     gerarSenha,
     getSenhas,
-    cancelarSenha
+    cancelarSenha,
+    getSenhasChamadas
 }

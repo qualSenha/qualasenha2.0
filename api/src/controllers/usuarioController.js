@@ -2,11 +2,22 @@ const moment = require('moment-timezone')
 const usuarioModel = require('../models/usuarioModel')
 
 async function login(app, req, res) {
-    console.log('oi')
     var usuario = await usuarioModel.getUsuario(req.body)
-    console.log(usuario)
-    usuario.horaAtendimento ? (usuario['hora'] = moment(usuario.horaAtendimento).format('HH:mm')) : (usuario['hora'] = null)
-    usuario.horaAtendimento ? (usuario['dia'] = moment(usuario.horaAtendimento).format('YYYY-MM-DD')) : (usuario['dia'] = null)
+    
+    if(usuario.senhaAtendimento) {
+        var normal = await usuarioModel.getNormal(req.body)
+        usuario['senhaAtendimento'] = normal.senha
+        usuario['localAtendimento'] = normal.local
+    }
+
+    if(usuario.horaAtendimento){
+        var agendada = await usuarioModel.getAgendada(req.body)
+
+        usuario['horaAtendimento'] = agendada.horaAtendimento
+        usuario['localAtendimento'] = agendada.local
+        usuario.horaAtendimento ? (usuario['hora'] = moment(usuario.horaAtendimento).format('HH:mm')) : (usuario['hora'] = null)
+        usuario.horaAtendimento ? (usuario['dia'] = moment(usuario.horaAtendimento).format('YYYY-MM-DD')) : (usuario['dia'] = null)
+    }
 
     res.json(usuario)
 }

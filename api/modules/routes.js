@@ -78,10 +78,31 @@ var routes = (app) =>
         }
     )
 
+    app.get(
+        '/getSenhasChamadas',
+        (req, res) => {
+            app.src.controllers.geralController.getSenhasChamadas(app, req, res)
+        }
+    )
+
     app.post(
         '/cancelarSenha',
         (req, res) => {
             app.src.controllers.geralController.cancelarSenha(app, req, res)
+        }
+    )
+
+    app.get(
+        '/getChat',
+        (req, res) => {
+            app.src.controllers.chatController.getChat(app, req, res)
+        }
+    )
+
+    app.get(
+        '/getChamados',
+        (req, res) => {
+            app.src.controllers.chatController.getChamados(app, req, res)
         }
     )
 }

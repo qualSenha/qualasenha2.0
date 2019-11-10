@@ -25,15 +25,70 @@ class Inquilino {
 
             const [retorno] = await query
             (
-                ' SELECT u.*, a.horaAtendimento, a.localAtendimento, a.tipoSolicitacao, a.status, s.senha AS "senhaAtendimento", s.local AS "localAtendimento" ' +
+                ' SELECT u.*, a.horaAtendimento, s.senha AS "senhaAtendimento" ' +
                 ' FROM usuario          AS u ' +
-                ' LEFT JOIN agendamento AS a ON a.ra = u.ra ' +
+                ' LEFT JOIN agendamento AS a ON a.ra = u.ra AND a.status = ? ' +
+                ' LEFT JOIN senhas      AS s ON s.ra = u.ra AND s.status = ? ' +
+                ' WHERE u.ra = ? AND u.senha = ? ',
+                [
+                    0,
+                    0,
+                    dados.ra,
+                    dados.senha
+                ]
+            )
+
+            return retorno
+            
+        } catch (err) {
+            return err
+        } finally {
+            _dbConnection.destroy()
+        }
+    }
+
+    async getNormal(dados) {
+        try {
+            var _dbConnection = dbConnection()
+            const query = util.promisify(_dbConnection.query).bind(_dbConnection)
+
+            const [retorno] = await query
+            (
+                ' SELECT s.senha, s.local ' +
+                ' FROM usuario          AS u ' +
                 ' LEFT JOIN senhas      AS s ON s.ra = u.ra AND s.status <> ? ' +
                 ' WHERE u.ra = ? AND u.senha = ? ',
                 [
                     2,
                     dados.ra,
                     dados.senha
+                ]
+            )
+
+            return retorno
+            
+        } catch (err) {
+            return err
+        } finally {
+            _dbConnection.destroy()
+        }
+    }
+
+    async getAgendada(dados) {
+        try {
+            var _dbConnection = dbConnection()
+            const query = util.promisify(_dbConnection.query).bind(_dbConnection)
+
+            const [retorno] = await query
+            (
+                ' SELECT horaAtendimento, localAtendimento ' +
+                ' FROM usuario          AS u ' +
+                ' LEFT JOIN agendamento AS a ON a.ra = u.ra ' +
+                ' WHERE u.ra = ? AND u.senha = ? AND a.status = ? ',
+                [
+                    dados.ra,
+                    dados.senha,
+                    0
                 ]
             )
 

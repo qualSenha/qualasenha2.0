@@ -41,6 +41,30 @@ class Inquilino {
         }
     }
 
+    async getSenhasChamadas(dados) {
+        try {
+            var _dbConnection = dbConnection()
+            const query = util.promisify(_dbConnection.query).bind(_dbConnection)
+
+            const retorno = await query
+            (
+                ' SELECT * FROM senhas WHERE local = ? AND status = ? AND dtCriacao like ? ',
+                [
+                    dados.local,
+                    1,
+                    `${dados.dtCriacao} %`
+                ]
+            )
+
+            return retorno
+            
+        } catch (err) {
+            return err
+        } finally {
+            _dbConnection.destroy()
+        }
+    }
+
     async postSenha(dados) {
         try {
             var _dbConnection = dbConnection()

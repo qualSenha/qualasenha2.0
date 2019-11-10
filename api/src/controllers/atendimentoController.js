@@ -18,6 +18,7 @@ async function chamarAgendamento(app, req, res) {
     dados['dataFinal'] = `${moment(new Date()).tz('America/Sao_Paulo').format('YYYY-MM-DD')} 23:59`
 
     var result = await atendimentoModel.chamarAgendamento(dados)
+    await atendimentoModel.alterarAgendamento(result.id)
 
     res.json(result)
 }
@@ -25,6 +26,7 @@ async function chamarAgendamento(app, req, res) {
 async function chamarSenha(app, req, res) {
 
     var result = await atendimentoModel.chamarSenha(req.query.local)
+    await atendimentoModel.alterarSenha(req.query.local, result.senha)
 
     res.json(result)
 }
