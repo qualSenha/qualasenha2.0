@@ -19,6 +19,7 @@
     "firebase-admin": "^8.7.0",
     "moment-timezone": "^0.5.26",
     "mongoose": "^5.7.9",
+    "mysql": "^2.17.1",
     "socket.io": "^2.3.0"
   }
 }

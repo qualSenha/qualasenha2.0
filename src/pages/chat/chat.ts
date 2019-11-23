@@ -27,26 +27,28 @@ export class ChatPage {
     this.model = new Usuarios()
 
     navParams.get('model') ? this.model = navParams.get('model') : this.model = navParams.data
- 
-    console.log(this.model)
- 
+  
     this.getMessages().subscribe(message => {
       this.messages.push(message)
     })
+
+    /* this.socket.on('message', (data) => {
+      console.log(data)
+      //this.messages.push(data)
+    }) */
  
-    this.getUsers().subscribe(data => {
+    /* this.getUsers().subscribe(data => {
       let user = data['user']
       if (data['event'] === 'left') {
         this.showToast('User left: ' + user)
       } else {
         this.showToast('User joined: ' + user)
       }
-    })
+    }) */
   }
  
   sendMessage() {
-    console.log("cccccccccccccc")
-    this.socket.emit('add-message', { 
+    this.socket.emit('add-message', {
       text: this.message, 
       nickname: this.model.nome,
       ra: this.model.ra,
@@ -57,9 +59,7 @@ export class ChatPage {
   }
  
   getMessages() {
-    console.log('bbbbbbb')
     let observable = new Observable(observer => {
-      console.log('aaasas')
       this.socket.on('message', (data) => {
         observer.next(data)
         console.log(data)

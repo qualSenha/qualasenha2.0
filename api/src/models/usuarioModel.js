@@ -56,10 +56,10 @@ class Inquilino {
             (
                 ' SELECT s.senha, s.local ' +
                 ' FROM usuario          AS u ' +
-                ' LEFT JOIN senhas      AS s ON s.ra = u.ra AND s.status <> ? ' +
+                ' LEFT JOIN senhas      AS s ON s.ra = u.ra AND s.status = ? ' +
                 ' WHERE u.ra = ? AND u.senha = ? ',
                 [
-                    2,
+                    0,
                     dados.ra,
                     dados.senha
                 ]

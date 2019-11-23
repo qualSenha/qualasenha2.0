@@ -72,12 +72,13 @@ class Inquilino {
 
             const retorno = await query
             (
-                ' INSERT INTO senhas (senha, local, status, ra) VALUES (?, ?, ?, ?); ',
+                ' INSERT INTO senhas (senha, local, status, ra, dtCriacao) VALUES (?, ?, ?, ?, ?); ',
                 [
                     dados.senha,
                     dados.local,
                     0,
-                    dados.ra
+                    dados.ra,
+                    dados.dtCriacao
                 ]
             )
 

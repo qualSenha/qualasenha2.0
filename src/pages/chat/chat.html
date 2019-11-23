@@ -13,13 +13,13 @@
       <ion-col col-9 *ngIf="message.origem !== 'aluno'" class="message" [ngClass]="{'my_message': message.origem === 'aluno', 'other_message': message.origem !== 'aluno'}">
         <span class="user_name">Atendimento:</span><br>
         <span>{{ message.text }}</span>
-        <div class="time">{{message.data | date:'dd/MM HH:mm:ss'}}</div>
+        <div class="time">{{message.data}}</div>
       </ion-col>
  
       <ion-col offset-3 col-9 *ngIf="message.origem === 'aluno'" class="message" [ngClass]="{'my_message': message.origem === 'aluno', 'other_message': message.origem !== 'aluno'}">
         <span class="user_name">{{ model.nome }}:</span><br>
         <span>{{ message.text }}</span>
-        <div class="time">{{message.data | date:'dd/MM HH:mm:ss'}}</div>
+        <div class="time">{{message.data}}</div>
       </ion-col>
  
     </ion-row>

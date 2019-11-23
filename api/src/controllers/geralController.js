@@ -17,6 +17,8 @@ async function gerarSenha (app, req, res) {
         }
     }
 
+    dados['dtCriacao'] = moment(new Date()).tz('America/Sao_Paulo').format('YYYY-MM-DD HH:mm:ss')
+
     await geralModel.postSenha(dados)
 
     res.json({ senha: dados.senha, localAtendimento: dados.local })       

@@ -35,6 +35,7 @@ io.on('connection', (socket) => {
             ra: message.ra,
             nome: message.nickname
         })
+        console.log(message)
 
         firebase.database().ref(`/${message.ra}/${message.data}`)
         .set({
@@ -46,6 +47,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('chamarNormal', (data) => {
+        console.log(data)
         io.emit('chamadoNormal', {
             senha: data.senha
         })
