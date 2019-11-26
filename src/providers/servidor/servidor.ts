@@ -6,9 +6,9 @@ import { ModuleLoader } from 'ionic-angular/umd/util/module-loader';
 @Injectable()
 export class ServidorProvider {
 
-  private URL = "http://localhost:5000"
+  //private URL = "http://localhost:5000"
   //private URL = "http://2629abe9.ngrok.io"
-  //private URL = "http://6a83eff0.ngrok.io"
+  private URL = "http://d2107854.ngrok.io"
 
   constructor(public http: Http) {
     console.log('Hello ServidorProvider Provider')
