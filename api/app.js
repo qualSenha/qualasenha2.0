@@ -28,7 +28,7 @@ var io = require('socket.io').listen(server)
 io.on('connection', (socket) => {
 
     socket.on('add-message', (message) => {
-        socket.emit('message', {
+        socket.broadcast.emit('message', {
             text: message.text,
             origem: message.origem,
             data: message.data,
@@ -48,13 +48,13 @@ io.on('connection', (socket) => {
 
     socket.on('chamarNormal', (data) => {
         console.log(data)
-        io.emit('chamadoNormal', {
+        socket.broadcast.emit('chamadoNormal', {
             senha: data.senha
         })
     })
 
     socket.on('chamarAgendada', (data) => {
-        io.emit('chamadoAgendada', {
+        socket.broadcast.emit('chamadoAgendada', {
             ra: data.ra
         })
     })
