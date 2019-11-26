@@ -20,8 +20,8 @@ import { LoginPage } from '../pages/login/login';
 
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { ChatPage } from '../pages/chat/chat';
-//const config: SocketIoConfig = { url: 'http://6a83eff0.ngrok.io', options: {} };
-const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
+const config: SocketIoConfig = { url: 'http://d2107854.ngrok.io', options: {} };
+//const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
 
 @NgModule({
   declarations: [

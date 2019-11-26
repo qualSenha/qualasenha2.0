@@ -27,7 +27,10 @@ export class ChatPage {
     this.model = new Usuarios()
 
     navParams.get('model') ? this.model = navParams.get('model') : this.model = navParams.data
-  
+    
+    /* this.socket.on('message',data =>{
+      console.log(data)
+    }) */
     this.getMessages().subscribe(message => {
       this.messages.push(message)
     })
@@ -49,6 +52,14 @@ export class ChatPage {
  
   sendMessage() {
     this.socket.emit('add-message', {
+      text: this.message, 
+      nickname: this.model.nome,
+      ra: this.model.ra,
+      origem: 'aluno',
+      data: moment(new Date()).tz('America/Sao_Paulo').format('DD-MM-YYYY HH:mm:ss')
+    })
+    console.log(this.message)
+    this.messages.push({
       text: this.message, 
       nickname: this.model.nome,
       ra: this.model.ra,
